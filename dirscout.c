@@ -23,7 +23,13 @@ void scan(const char *base_url, const char *wordlist) {
     char url[1024];
 
     while (fgets(line, sizeof(line), file)) {
-        line[strcspn(line, "\n")] = 0; // remove newline
+         line[strcspn(line, "\r\n")] = 0;
+
+         // skip empty lines
+         if (strlen(line) == 0) {
+             continue;
+         }
+
         snprintf(url, sizeof(url), "%s/%s", base_url, line);
 
         curl_easy_setopt(curl, CURLOPT_URL, url);

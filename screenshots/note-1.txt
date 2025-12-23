@@ -1,0 +1,2 @@
+Because of Line breaks in the wordlist it is returning 200, 
+whereas example.com only resolves to /  
